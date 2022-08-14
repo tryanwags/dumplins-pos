@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "dsfstepperview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/dagronf/DSFStepperView",
+      "state" : {
+        "revision" : "cde9aa78844b3fa64be3c398b38c9b5f07876985",
+        "version" : "3.0.0"
+      }
+    }
+  ],
+  "version" : 2
+}

@@ -10,7 +10,7 @@ import SwiftUI
 // use struct to represent the order template)
 struct Order: Identifiable {
     var id = UUID()
-    let orderId: Int // paper ticket number
+    let orderId: String // paper ticket number
     let date: Date = Date()
     let venue: String
     let customerName: String
@@ -34,38 +34,41 @@ struct OrderHistoryView: View {
     
     var body: some View {
         
-        NavigationView {
-            List {
-                ForEach(orders.items) { item in // does not need id: \.name because Order struct is identifiable
-                    Text(String(item.orderId))
-                    Text(item.customerName)
-//                    Text(String(item.items))
-                    Text(String(item.subTotal))
-                    Text(item.paymentMethod)
-                    Text(String(item.total))
-                    Text(item.note)
-                }
-                .onDelete(perform: removeItems)
+//        NavigationView {
+            ZStack {
+                Color.white
+                Text("HELLO")
+//                ForEach(orders.items) { item in // does not need id: \.name because Order struct is identifiable
+//                    Text(String(item.orderId))
+//                    Text(item.customerName)
+////                    Text(String(item.items))
+//                    Text(String(item.subTotal))
+//                    Text(item.paymentMethod)
+//                    Text(String(item.total))
+//                    Text(item.note)
+//                }
+//                .onDelete(perform: removeItems)
             }
-            .navigationTitle("Order History")
-            .toolbar {
-                Button {
-                    let order = Order(orderId: 12345,
-                                      venue: "Benny Boy",
-                                      customerName: "Becca",
-//                                      items: ["Chicken": 3, "Shiitake": 2, "Kalbi": 1],
-                                      subTotal: 54.00,
-                                      paymentMethod: "Venmo",
-                                      serviceFee: 0.0,
-                                      discount: 0.0,
-                                      total: 54.00,
-                                      note: "All to-go")
-                    orders.items.append(order)
-                } label: {
-                    Image(systemName: "plus")
-                }
-            }
-        }
+            .frame(height: UIScreen.main.bounds.height * (1-navbarHeight))
+//            .navigationTitle("Order History")
+//            .toolbar {
+//                Button {
+//                    let order = Order(orderId: "12345",
+//                                      venue: "Benny Boy",
+//                                      customerName: "Becca",
+////                                      items: ["Chicken": 3, "Shiitake": 2, "Kalbi": 1],
+//                                      subTotal: 54.00,
+//                                      paymentMethod: "Venmo",
+//                                      serviceFee: 0.0,
+//                                      discount: 0.0,
+//                                      total: 54.00,
+//                                      note: "All to-go")
+//                    orders.items.append(order)
+//                } label: {
+//                    Image(systemName: "plus")
+//                }
+//            }
+//        }
         
     }
     

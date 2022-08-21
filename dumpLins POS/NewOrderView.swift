@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct NewOrderView: View {
-    @ObservedObject var inventory: Inventory
-    @ObservedObject var orders: Orders
+    
+    @StateObject var inventory = Inventory()
     
     @Binding var activeSheet: String
     @State private var numButtonColumns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 3)
@@ -61,7 +61,8 @@ struct NewOrderView: View {
                             item.decrementStock()
                         }) {
                             VStack(alignment: .leading) {
-                                Text("\(item.name)")
+                                Text(item.category == "Frozen" ? "\(item.name) (Frozen)" : item.name)
+                                    .frame(alignment: .leading)
                                 Text("Stock: \(item.stock)")
                             }
                         }
@@ -98,18 +99,18 @@ struct NewOrderView: View {
                         .frame(height: 400)
                     
                     
-                    Button("Save") {
-                        let order = Order(orderId: orderId,
-                                          venue: venue,
-                                          customerName: customerName,
-                                          subTotal: subTotal,
-                                          paymentMethod: paymentMethod,
-                                          serviceFee: serviceFee,
-                                          discount: discount,
-                                          total: total,
-                                          note: note)
-                        orders.items.append(order)
-                    }
+//                    Button("Save") {
+//                        let order = Order(orderId: orderId,
+//                                          venue: venue,
+//                                          customerName: customerName,
+//                                          subTotal: subTotal,
+//                                          paymentMethod: paymentMethod,
+//                                          serviceFee: serviceFee,
+//                                          discount: discount,
+//                                          total: total,
+//                                          note: note)
+//                        orders.items.append(order)
+//                    }
                     
 
                 }
@@ -126,8 +127,6 @@ struct NewOrderView: View {
 
 struct NewOrderView_Previews: PreviewProvider {
     static var previews: some View {
-        NewOrderView(inventory: Inventory(),
-                     orders: Orders(),
-                     activeSheet: .constant("XYZ")) // only requires placeholder.
+        NewOrderView(activeSheet: .constant("XYZ"))
     }
 }

@@ -10,13 +10,13 @@ import SwiftUI
 struct AddInventoryView: View {
     @Environment(\.dismiss) var dismiss
     
-    @ObservedObject var inventory: Inventory
+    @StateObject var inventory = Inventory()
     
-    @State private var name = ""
-    @State private var category = ""
-    @State private var supply = 0
-    @State private var unitsPerOrder: Int = 0
-    @State private var pricePerOrder: Double = 0.0
+    @State private var name: String = ""
+    @State private var category: String = ""
+    @State private var supply: Int? = nil
+    @State private var unitsPerOrder: Int? = nil
+    @State private var pricePerOrder: Double? = nil
 
     let categories = ["Fresh", "Frozen", "Merchandise"]
 
@@ -25,6 +25,8 @@ struct AddInventoryView: View {
             Form {
                 HStack {
                     Text("Name")
+                        .frame(width: 125, alignment: .leading)
+                    Divider()
                     TextField("Name", text: $name)
                 }
                 Picker("Category", selection: $category) {
@@ -32,19 +34,26 @@ struct AddInventoryView: View {
                         Text($0)
                     }
                 }
+                .frame(width: 140, alignment: .leading)
                 HStack {
-                    Text("Supply")
-                    TextField("Supply", value: $supply, format: .number)
+                    Text("Orders Supplied")
+                        .frame(width: 125, alignment: .leading)
+                    Divider()
+                    TextField("Orders Supplied", value: $supply, format: .number)
                     .keyboardType(.decimalPad)
                 }
                 HStack {
                     Text("Units per Order")
+                        .frame(width: 125, alignment: .leading)
+                    Divider()
                     TextField("Units per Order", value: $unitsPerOrder, format: .number)
                         .keyboardType(.decimalPad)
                 }
                 HStack {
                     Text("Price per Order")
-                    TextField("Price per Order", value: $pricePerOrder, format: .number)
+                        .frame(width: 125, alignment: .leading)
+                    Divider()
+                    TextField("Price per Order", value: $pricePerOrder, format: .currency(code: "USD"))
                         .keyboardType(.decimalPad)
                 }
 
@@ -54,9 +63,9 @@ struct AddInventoryView: View {
                 Button("Save") {
                     let item = InventoryItem(name: name,
                                              category: category,
-                                             supply: supply,
-                                             unitsPerOrder: unitsPerOrder,
-                                             pricePerOrder: pricePerOrder)
+                                             supply: supply!,
+                                             unitsPerOrder: unitsPerOrder!,
+                                             pricePerOrder: pricePerOrder!)
                     inventory.items.append(item)
                     dismiss()
                 }
@@ -69,6 +78,6 @@ struct AddInventoryView: View {
 }
 struct AddInventoryView_Previews: PreviewProvider {
     static var previews: some View {
-        AddInventoryView(inventory: Inventory())
+        AddInventoryView()
     }
 }

@@ -16,6 +16,8 @@
 		4BDEF9E128A9C2480094AC5A /* NewOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDEF9E028A9C2480094AC5A /* NewOrderView.swift */; };
 		4BDEF9E328A9C9A80094AC5A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDEF9E228A9C9A80094AC5A /* SettingsView.swift */; };
 		4BDEFA1B28AF43A10094AC5A /* AddInventoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDEFA1A28AF43A10094AC5A /* AddInventoryView.swift */; };
+		4BDEFB2128B054890094AC5A /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDEFB2028B054890094AC5A /* Order.swift */; };
+		4BDEFB2B28B06F8C0094AC5A /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDEFB2A28B06F8C0094AC5A /* Inventory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		4BDEF9E028A9C2480094AC5A /* NewOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrderView.swift; sourceTree = "<group>"; };
 		4BDEF9E228A9C9A80094AC5A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		4BDEFA1A28AF43A10094AC5A /* AddInventoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInventoryView.swift; sourceTree = "<group>"; };
+		4BDEFB2028B054890094AC5A /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		4BDEFB2A28B06F8C0094AC5A /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,12 +65,14 @@
 		4B97F20D28A752F800620C8E /* dumpLins POS */ = {
 			isa = PBXGroup;
 			children = (
-				4BDEF9E228A9C9A80094AC5A /* SettingsView.swift */,
-				4BDEFA1A28AF43A10094AC5A /* AddInventoryView.swift */,
 				4BDEF9DC28A9AE4B0094AC5A /* dumpLins_POSApp.swift */,
 				4B97F21028A752F800620C8E /* ContentView.swift */,
 				4BDEF9E028A9C2480094AC5A /* NewOrderView.swift */,
 				4B97F23B28A9574B00620C8E /* OrderHistoryView.swift */,
+				4BDEF9E228A9C9A80094AC5A /* SettingsView.swift */,
+				4BDEFA1A28AF43A10094AC5A /* AddInventoryView.swift */,
+				4BDEFB2028B054890094AC5A /* Order.swift */,
+				4BDEFB2A28B06F8C0094AC5A /* Inventory.swift */,
 				4B97F21228A752F900620C8E /* Assets.xcassets */,
 				4B97F21428A752F900620C8E /* Preview Content */,
 			);
@@ -159,10 +165,12 @@
 			files = (
 				4BDEF9E328A9C9A80094AC5A /* SettingsView.swift in Sources */,
 				4BDEF9DD28A9AE4B0094AC5A /* dumpLins_POSApp.swift in Sources */,
+				4BDEFB2B28B06F8C0094AC5A /* Inventory.swift in Sources */,
 				4B97F21128A752F800620C8E /* ContentView.swift in Sources */,
 				4BDEFA1B28AF43A10094AC5A /* AddInventoryView.swift in Sources */,
 				4BDEF9E128A9C2480094AC5A /* NewOrderView.swift in Sources */,
 				4B97F23C28A9574B00620C8E /* OrderHistoryView.swift in Sources */,
+				4BDEFB2128B054890094AC5A /* Order.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

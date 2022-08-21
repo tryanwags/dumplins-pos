@@ -21,12 +21,16 @@ public var lowerPanelsPadding:CGFloat = 20
 // Screen Handler
 struct ContentView: View {
     
+    @StateObject var inventory = Inventory()
+//    @State private var currentVenue: String = ""
+    @AppStorage("currentVenue") var currentVenue: String = ""
+    
+//    @StateObject var orders = Orders()
     @State private var sheetNames = ["NewOrder", "OrderHistory", "Settings"]
     @State private var activeSheet = "NewOrder" // show New Orders on launch
     @State private var navbarLabels = ["New \n Order", "Order \n History", "Settings"] // clean labels for buttons. redundant?
     @State private var touchedNavbarButton:Int = 0 // default to New Orders. Also redundant?
-    @AppStorage("currentVenue") private var currentVenue: String = "Benny Boy Brewing Co."
-    @AppStorage("timestamp") private var timestamp = DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .none)
+    @AppStorage("timestamp") var timestamp = DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .none)
 
     var body: some View {
         GeometryReader { geo in
@@ -39,6 +43,7 @@ struct ContentView: View {
                         LinearGradient(gradient: Gradient(colors: [Color("mediumTeal"), Color("pewterBlue")]), startPoint: .leading, endPoint: .trailing)
                         HStack(spacing: 0) {
                             Image("logo") // dumpLins logo
+//                            Text("\(timestamp)  |  \(currentVenue)")
                             Text("\(timestamp)  |  \(currentVenue)")
                                 .frame(alignment: .center)
                                 .padding(.leading, lowerPanelsPadding)
@@ -70,7 +75,8 @@ struct ContentView: View {
                 // LOWER VIEW TOGGLES ----------------------------------------------
                 VStack {
                     if activeSheet == "NewOrder" {
-                        NewOrderView(inventory: Inventory(), orders: Orders(), activeSheet: $activeSheet)
+                        NewOrderView(activeSheet: $activeSheet)
+//                        NewOrderView(inventory: Inventory(), orders: Orders(), activeSheet: $activeSheet)
                             .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
                     } else if activeSheet == "OrderHistory" {
                         OrderHistoryView(activeSheet: $activeSheet)
@@ -84,7 +90,7 @@ struct ContentView: View {
             .ignoresSafeArea()
 
     }
-        .ignoresSafeArea(.keyboard)
+    .ignoresSafeArea(.keyboard)
         
     } // end body
 } // end ContentView
